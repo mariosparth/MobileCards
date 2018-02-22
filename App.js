@@ -1,11 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from 'react-redux';
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import ReduxThunk from "redux-thunk";
 import DeckMain from "./components/DeckMain";
 import AddEntry from "./components/AddEntry";
 import { purple, black, blue } from "./utils/colors";
 import { Constants } from "expo";
+import reducer from "./reducers";
 
 function CustomStatusBar({ backgroundColor, ...props }) {
   return (
@@ -50,7 +54,7 @@ const MainNavigator = StackNavigator({
   DeckMain: {
     screen: DeckMain,
     navigationOptions: {
-      headerTintColor: "white",
+      headerTintColor: "black",
       headerStyle: {
         backgroundColor: "purple"
       }
@@ -60,11 +64,17 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
   render() {
+    const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
     return (
-      <View>
-        <CustomStatusBar backgroundColor={purple} barStyle="light-content" />
-        <MainNavigator />
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <CustomStatusBar
+            backgroundColor="purple"
+            barStyle="light-content"
+          />
+          <MainNavigator />
+        </View>
+      </Provider>
     );
   }
 }

@@ -13,7 +13,7 @@ class DeckList extends Component {
     this.props.fetchDeckDB();
   }
 
-  deckItem = ({ item }) =>
+  renderItem = ({ item }) =>
     <TouchableOpacity
       onPress={() =>
         this.props.navigation.navigate("Deck", {
@@ -38,7 +38,7 @@ class DeckList extends Component {
           ?
           <FlatList
             data={this.props.DBdata}
-            deckItem={this.renderItem}
+            renderItem={this.renderItem}
           />
           : <Card title="Create a deck to get started!"/>
         }

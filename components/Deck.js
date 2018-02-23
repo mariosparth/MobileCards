@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import DeckList from './DeckList';
 
-class DeckMain extends Component {
+class Deck extends Component {
   render() {
     return (
-      <View>
-        <Text>DeckMain</Text>
+      <View style={styles.container}>
+        <DeckList {...this.props} />
       </View>
     );
   }
@@ -20,4 +21,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DeckMain;
+export default Deck;

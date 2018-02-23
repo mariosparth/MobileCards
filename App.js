@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import ReduxThunk from "redux-thunk";
-import DeckMain from "./components/DeckMain";
+import Deck from "./components/Deck";
 import AddEntry from "./components/AddEntry";
-import { purple, black, blue } from "./utils/colors";
+import { purple, black, blue, white } from "./utils/colors";
 import { Constants } from "expo";
 import reducer from "./reducers";
 
@@ -21,7 +21,7 @@ function CustomStatusBar({ backgroundColor, ...props }) {
 
 const Tabs = TabNavigator({
   Decks: {
-    screen: DeckMain,
+    screen: Deck,
     navigationOptions: {
       tabBarLabel: "Decks",
       tabBarIcon: ({ tintColor }) => (
@@ -45,18 +45,18 @@ const MainNavigator = StackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: "Flash Cards",
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
         backgroundColor: purple
       }
     }
   },
-  DeckMain: {
-    screen: DeckMain,
+  Deck: {
+    screen: Deck,
     navigationOptions: {
-      headerTintColor: "black",
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
       }
     }
   }
@@ -69,7 +69,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={{ flex: 1 }}>
           <CustomStatusBar
-            backgroundColor="purple"
+            backgroundColor={purple}
             barStyle="light-content"
           />
           <MainNavigator />

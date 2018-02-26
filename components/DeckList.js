@@ -13,10 +13,10 @@ class DeckList extends Component {
     this.props.fetchDeckDB();
   }
 
-  renderItem = ({ item }) =>
+  renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() =>
-        this.props.navigation.navigate("Deck", {
+        this.props.navigation.navigate("DeckDetail", {
           entryId: item.key,
           navTitle: item.title
         })
@@ -29,21 +29,19 @@ class DeckList extends Component {
           </Badge>
         </Card>
       </View>
-    </TouchableOpacity>;
+    </TouchableOpacity>
+  );
 
   render() {
     return (
-    <View style={styles.containerStyle}>
-        {this.props.DBdata.length > 0
-          ?
-          <FlatList
-            data={this.props.DBdata}
-            renderItem={this.renderItem}
-          />
-          : <Card title="Create a deck to get started!"/>
-        }
-    </View>
-    )
+      <View style={styles.containerStyle}>
+        {this.props.DBdata.length > 0 ? (
+          <FlatList data={this.props.DBdata} renderItem={this.renderItem} />
+        ) : (
+          <Card title="Create a deck to get started!" />
+        )}
+      </View>
+    );
   }
 }
 

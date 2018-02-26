@@ -1,15 +1,18 @@
-import React from "react";
-import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from 'react-redux';
+import React, { Component } from "react";
+import { StatusBar, View } from "react-native";
 import { TabNavigator, StackNavigator } from "react-navigation";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";
-import Deck from "./components/Deck";
-import AddEntry from "./components/AddEntry";
-import { purple, black, blue, white } from "./utils/colors";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Constants } from "expo";
+import Deck from "./components/Deck";
+import DeckDetail from "./components/DeckDetail";
+import AddEntry from "./components/AddEntry";
+import AddQuestion from "./components/AddQuestion";
+import QuizMain from "./components/QuizMain";
 import reducer from "./reducers";
+//import { setLocalNotification } from "./utils/helpers";
 
 function CustomStatusBar({ backgroundColor, ...props }) {
   return (
@@ -45,33 +48,50 @@ const MainNavigator = StackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: "Flash Cards",
-      headerTintColor: white,
+      headerTintColor: "white",
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: "purple"
       }
     }
   },
-  Deck: {
-    screen: Deck,
+  DeckDetail: {
+    screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: black,
+      headerTintColor: "white",
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: "purple"
+      }
+    }
+  },
+  AddQuestion: {
+    screen: AddQuestion,
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "purple"
+      }
+    }
+  },
+  QuizMain: {
+    screen: QuizMain,
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "purple"
       }
     }
   }
 });
 
-export default class App extends React.Component {
+export default class App extends Component {
+
+
   render() {
     const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <CustomStatusBar
-            backgroundColor={purple}
-            barStyle="light-content"
-          />
+          <CustomStatusBar backgroundColor="purple" barStyle="light-content" />
           <MainNavigator />
         </View>
       </Provider>

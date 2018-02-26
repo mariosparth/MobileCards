@@ -12,7 +12,8 @@ import AddEntry from "./components/AddEntry";
 import AddQuestion from "./components/AddQuestion";
 import QuizMain from "./components/QuizMain";
 import reducer from "./reducers";
-//import { setLocalNotification } from "./utils/helpers";
+import {white, purple, black } from './utils/colors';
+import { setLocalNotification } from "./utils/helpers";
 
 function CustomStatusBar({ backgroundColor, ...props }) {
   return (
@@ -48,36 +49,36 @@ const MainNavigator = StackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: "Flash Cards",
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
       }
     }
   },
   DeckDetail: {
     screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
       }
     }
   },
   AddQuestion: {
     screen: AddQuestion,
     navigationOptions: {
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
       }
     }
   },
   QuizMain: {
     screen: QuizMain,
     navigationOptions: {
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
       }
     }
   }
@@ -91,7 +92,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <CustomStatusBar backgroundColor="purple" barStyle="light-content" />
+          <CustomStatusBar backgroundColor={purple} barStyle="light-content" />
           <MainNavigator />
         </View>
       </Provider>

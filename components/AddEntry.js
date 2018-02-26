@@ -11,6 +11,7 @@ import {
   FormValidationMessage
 } from 'react-native-elements';
 import { saveDeckTitle } from '../utils/api';
+import { blue } from '../utils/colors';
 
 
 export default class AddEntry extends React.Component {
@@ -49,7 +50,7 @@ export default class AddEntry extends React.Component {
         }}
         behavior="padding"
       >
-        <Card title="What is the title of your new deck?" >
+        <Card title="Write the title of your new deck?" >
           <FormInput
             onChangeText={titleText => this.setState({ titleText })}
             value={this.state.titleText}
@@ -60,7 +61,7 @@ export default class AddEntry extends React.Component {
           <Button
             title="Create Deck"
             raised
-            backgroundColor="rgb(72, 149, 236)"
+            backgroundColor={blue}
             onPress={this.handleSubmit}
           />
         </Card>

@@ -17,3 +17,5 @@ This should run for some minutes, be patient. When it finishes, type:
 ```
 > yarn start
 ```
+
+The app has been tested and works correctly in iOS devices.

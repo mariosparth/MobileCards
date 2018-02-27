@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { Badge, Card } from 'react-native-elements';
 import { fetchDeckDB } from '../actions';
+import { pink } from '../utils/colors';
 
 class DeckList extends Component {
   componentDidMount() {
@@ -24,7 +25,7 @@ class DeckList extends Component {
     >
       <View>
         <Card title={item.title} subtitle={`${item.questions.length} cards`}>
-          <Badge containerStyle={{ backgroundColor: "lightblue" }}>
+          <Badge containerStyle={{ backgroundColor: pink }}>
             <Text>{`${item.questions.length} cards`}</Text>
           </Badge>
         </Card>

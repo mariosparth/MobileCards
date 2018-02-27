@@ -10,8 +10,6 @@ import {
   DELETE_DECK
 } from './types';
 
-
-
 export function fetchDeckDB() {
   return (dispatch) => {
     getDecks().then(data => dispatch({ type: FETCH_DECK_DB, payload: data}));

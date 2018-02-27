@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { NavigationActions } from "react-navigation";
 import { Badge, Button, Card } from "react-native-elements";
 import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
+import { red, green , pink} from '../utils/colors';
 
 class QuizMain extends React.Component {
   state = {
@@ -75,7 +76,7 @@ class QuizMain extends React.Component {
           </View>
           <View style={styles.badgeStyle}>
             <Badge
-              containerStyle={{ backgroundColor: "violet" }}
+              containerStyle={{ backgroundColor: pink }}
               onPress={() =>
                 this.setState({ showQuestion: !this.state.showQuestion })
               }
@@ -86,7 +87,7 @@ class QuizMain extends React.Component {
           <Button
             buttonStyle={styles.buttonStyle}
             title="Correct"
-            backgroundColor="#377D22"
+            backgroundColor={green}
             onPress={() => {
               this.setState({
                 currentQuestion: currentQuestion + 1,
@@ -97,7 +98,7 @@ class QuizMain extends React.Component {
           <Button
             buttonStyle={[styles.buttonStyle, { marginTop: 10 }]}
             title="Incorrect"
-            backgroundColor="#C3392A"
+            backgroundColor={red}
             onPress={() =>
               this.setState({ currentQuestion: currentQuestion + 1 })
             }
@@ -110,13 +111,13 @@ class QuizMain extends React.Component {
         <Button
           buttonStyle={styles.buttonStyle}
           title="Start Over"
-          backgroundColor="#377D22"
+          backgroundColor={green}
           onPress={() => this.resetQuiz()}
         />
         <Button
           buttonStyle={[styles.buttonStyle, { marginTop: 10 }]}
           title="Back to Deck"
-          backgroundColor="#C3392A"
+          backgroundColor={red}
           onPress={() => this.backToDeck()}
         />
       </Card>

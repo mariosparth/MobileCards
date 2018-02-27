@@ -9,6 +9,7 @@ import {
   getDeckDetails,
   deleteDeck,
 } from '../actions';
+import { blue, pink, red } from "../utils/colors";
 
 
 
@@ -35,64 +36,32 @@ class DeckDetail extends Component {
   }
 
   render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignContent: 'center'
-        }}
-      >
-        <Card title={this.props.title} >
-          <Text style={{marginBottom: 10, textAlign: 'center'}}>
+    return <View style={{ flex: 1, justifyContent: "center", alignContent: "center" }}>
+        <Card title={this.props.title}>
+          <Text style={{ marginBottom: 10, textAlign: "center" }}>
             {this.props.questions ? this.props.questions.length : 0} cards
           </Text>
           <View>
-            <Button
-              icon={{name: 'add-circle'}}
-              backgroundColor='#03A9F4'
-              buttonStyle={styles.buttonStyle}
-              title='Add Card'
-              onPress={() => {
-                  this.props.navigation.navigate(
-                    'AddQuestion',
-                    {
-                      navTitle: this.props.title,
-                      title: this.props.title
-                    }
-                  );
-                }
-              }
-            />
+            <Button icon={{ name: "add-circle" }} backgroundColor={blue} buttonStyle={styles.buttonStyle} title="Add Card" onPress={() => {
+                this.props.navigation.navigate("AddQuestion", {
+                  navTitle: this.props.title,
+                  title: this.props.title
+                });
+              }} />
           </View>
           <View>
-            <Button
-              icon={{name: 'play-arrow'}}
-              backgroundColor='#96C051'
-              buttonStyle={[styles.buttonStyle, { marginTop: 10 }]}
-              title='Start Quiz'
-              onPress={() => {
-                  this.props.navigation.navigate(
-                    'QuizMain',
-                    {
-                      navTitle: this.props.title,
-                      questions: this.props.questions }
-                  );
-                }
-              }
-            />
+            <Button icon={{ name: "play-arrow" }} backgroundColor={pink} buttonStyle={[styles.buttonStyle, { marginTop: 10 }]} title="Start Quiz" onPress={() => {
+                this.props.navigation.navigate("QuizMain", {
+                  navTitle: this.props.title,
+                  questions: this.props.questions
+                });
+              }} />
           </View>
         </Card>
         <View>
-          <Button
-            title="Delete Deck"
-            buttonStyle={[styles.buttonStyle, { marginTop: 50 }]}
-            backgroundColor="red"
-            onPress={() => this.deleteItem()}
-          />
+          <Button title="Delete Deck" buttonStyle={[styles.buttonStyle, { marginTop: 50 }]} backgroundColor={red} onPress={() => this.deleteItem()} />
         </View>
-      </View>
-    )
+      </View>;
   }
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from "react";
 import {
   Text,
   KeyboardAvoidingView,
@@ -14,7 +14,7 @@ import { saveDeckTitle } from '../utils/api';
 import { blue } from '../utils/colors';
 
 
-export default class AddEntry extends React.Component {
+export default class AddEntry extends Component {
   state = {
     titleText: '',
     errorMessage: false

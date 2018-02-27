@@ -8,6 +8,7 @@ import {
   FormValidationMessage
 } from "react-native-elements";
 import { addCardToDeck } from "../utils/api";
+import { red } from '../utils/colors';
 
 class AddQuestion extends React.Component {
   state = {
@@ -73,7 +74,7 @@ class AddQuestion extends React.Component {
           <Button
             title="Submit"
             raised
-            backgroundColor="rgb(72, 149, 236)"
+            backgroundColor={red}
             onPress={this.handleSubmit}
           />
         </Card>

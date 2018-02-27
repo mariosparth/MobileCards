@@ -48,7 +48,7 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
     navigationOptions: {
-      title: "Flash Cards",
+      title: "FlashCards",
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple
